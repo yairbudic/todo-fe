@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        CREDS = credentials('jenkins-user-for-artifact-repository')
+        CREDS = credentials('dockerhub')
     }
     stages {
         stage('Build') {
