@@ -33,7 +33,7 @@ pipeline {
                 echo 'pushing to dockerhub....'
                 sh 'docker login -u ${CREDS_USR} -p ${CREDS_PSW}'
                 // sh 'docker tag ${BUILD_NUMBER} ybudic/todo-fe:latest'
-                sh 'docker push ybudic/todo-fe:${BUILD_NUMBER}'
+                sh 'docker push  --all-tags ybudic/todo-fe:${BUILD_NUMBER}'
             }
         }
     }
