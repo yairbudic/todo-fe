@@ -19,7 +19,7 @@ pipeline {
         stage('Delivery') {
             steps {
                 echo 'Delivery....'
-                sh 'DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t ybudic/todo-fe:${BUILD_NUMBER} --target delivery .'
+                sh 'DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t ybudic/todo-fe:${BUILD_NUMBER} -t ybudic/todo-fe:latest --target delivery .'
             }
         }
          stage('Cleanup') {
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 echo 'pushing to dockerhub....'
                 sh 'docker login -u ${CREDS_USR} -p ${CREDS_PSW}'
-                sh 'docker tag ${BUILD_NUMBER} ybudic/todo-fe:latest'
+                // sh 'docker tag ${BUILD_NUMBER} ybudic/todo-fe:latest'
                 sh 'docker push ybudic/todo-fe:${BUILD_NUMBER}'
             }
         }
